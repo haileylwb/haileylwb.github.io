@@ -12,9 +12,8 @@ body {
     padding: 0;
 }
   
-/* Use Alagard for headings */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Alagard', sans-serif;
+    font-family: "Press Start 2P", system-ui;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
