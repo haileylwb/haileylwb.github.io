@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Alagard';
+    src: url('fonts/Alagard.ttf') format('truetype');
+  }
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #111;   /* Optional: game feel */
+    color: #eee;
+    margin: 0;
+    padding: 0;
+}
+  
+/* Use Alagard for headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Alagard', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
