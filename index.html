@@ -12,6 +12,10 @@
             font-style: normal;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -103,6 +107,7 @@
             color: #ffffff;
             text-align: center;
             margin-bottom: 1rem;
+            scroll-margin-top: 200px
         }
 
         .section-title-dark {
@@ -111,6 +116,7 @@
             color: #3066BE;
             text-align: center;
             margin-bottom: 1rem;
+            scroll-margin-top: 200px
         }
 
         /* === NAVIGATION BAR === */
@@ -120,7 +126,9 @@
             justify-content: space-between;
             padding: 0.75rem 2rem;
             background: #3066BE;
-            position: relative;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .nav-brand {
@@ -410,30 +418,31 @@
     <div class="page-wrapper">
         <div class="bubbles-layer"></div>
 
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="/assets/piplupHead.png" alt="Logo" class="logo">
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">☰</button>
+            <div class="nav-menu" id="nav-menu">
+                <div class="nav-left">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="nav-right">
+                    <a href="https://www.linkedin.com/in/haileylwb/">LinkedIn</a>
+                    <a href="https://medium.com/@haileylwb">Medium</a>
+                    <a href="https://github.com/haileylwb">Github</a>
+                </div>
+            </div>
+        </nav>
+
         <!-- Section 1 -->
         <div class="section section-one">
             <div class="gradient-layer"></div>
             <div class="content-layer">
-                <!-- Navigation Bar -->
-                <nav class="navbar">
-                    <div class="nav-brand">
-                        <img src="/assets/piplupHead.png" alt="Logo" class="logo">
-                    </div>
-                    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">☰</button>
-                    <div class="nav-menu" id="nav-menu">
-                        <div class="nav-left">
-                            <a href="#about">About</a>
-                            <a href="#experience">Experience</a>
-                            <a href="#projects">Projects</a>
-                            <a href="#contact">Contact</a>
-                        </div>
-                        <div class="nav-right">
-                            <a href="https://www.linkedin.com/in/haileylwb/">LinkedIn</a>
-                            <a href="https://medium.com/@haileylwb">Medium</a>
-                            <a href="https://github.com/haileylwb">Github</a>
-                        </div>
-                    </div>
-                </nav>
 
                 <!-- Hero Section -->
                 <div class="hero-section">
@@ -457,7 +466,17 @@
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
-                    <h2 class="section-title">About Me</h2>
+                    <h2 class="section-title" id="about">About Me</h2>
+                    <div>
+                        <!-- ID Card -->
+                        <div>
+
+                        </div>
+                        <!-- Badges -->
+                        <div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -467,7 +486,7 @@
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
-                    <h2 class="section-title">Experience</h2>
+                    <h2 class="section-title" id="experience">Experience</h2>
                 </div>
             </div>
         </div>
@@ -477,7 +496,7 @@
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
-                    <h2 class="section-title-dark">Projects</h2>
+                    <h2 class="section-title-dark" id="projects">Projects</h2>
                 </div>
             </div>
         </div>
@@ -487,10 +506,12 @@
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
-                    <h2 class="section-title">Contact</h2>
+                    <h2 class="section-title" id="contact">Contact</h2>
                 </div>
+            </div>
+        </div>
 
-                <!-- Footer -->
+        <!-- Footer -->
                 <nav class="footerbar">
                     <img src="/assets/piplup.png" alt="Logo" class="footerPic">
                     <div class="footer">
@@ -499,8 +520,6 @@
                     </div>
                     <img src="/assets/piplup.png" alt="Logo" class="footerPic">
                 </nav>
-            </div>
-        </div>
     </div>
 
     <!-- JavaScript for menu toggle -->
@@ -510,6 +529,15 @@
 
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+        });
+
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('click', (e) => {
+            e.preventDefault(); // prevent any default link behavior
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
