@@ -61,7 +61,9 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
 
@@ -118,7 +120,6 @@
             justify-content: space-between;
             padding: 0.75rem 2rem;
             background: #3066BE;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
@@ -150,11 +151,17 @@
             flex: 1;
         }
 
-        .nav-left, .nav-right {
+        .nav-left {
+            padding-left: 20px;
+        }
+
+        .nav-left,
+        .nav-right {
             display: flex;
         }
 
-        .nav-left a, .nav-right a {
+        .nav-left a,
+        .nav-right a {
             text-decoration: none;
             color: #ffffff;
             font-weight: 500;
@@ -163,24 +170,47 @@
             transition: all 0.2s ease;
             position: relative;
             letter-spacing: 0.3px;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        .nav-left a:hover, .nav-right a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .nav-left a:not(:last-child)::after, .nav-right a:not(:last-child)::after {
-            content: '';
+        .nav-left a::before,
+        .nav-right a::before {
+            content: "";
             position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 20px;
-            width: 1px;
-            background-color: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            border-radius: 8px;
+            transform: scale(0);
+            transition: all 0.4s;
         }
 
-        @media (max-width: 768px) {
+        .nav-left a:hover::before,
+        .nav-right a:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .nav-left a:hover,
+        .nav-right a:hover {
+            /* Slight lift on hover for better interaction feedback */
+            transform: translateY(-1px);
+            box-shadow: 0 5px 0 #2A5AA0, 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-left a:active,
+        .nav-right a:active {
+            /* Sunken/depressed button effect */
+            background-color: #3066BE;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
+            transform: translateY(2px);
+            transition: all 0.1s ease;
+        }
+
+        @media (max-width: 890px) {
             .hamburger {
                 display: block;
             }
@@ -189,7 +219,7 @@
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                background-color: #3066BE;
+                background-color: white;
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -198,22 +228,33 @@
 
             .nav-menu.active {
                 display: flex;
+                box-shadow: 0 5px rgba(0, 0, 0, 0.1);
             }
 
-            .nav-left, .nav-right {
+            .nav-menu.active a {
+                color: #3066BE;
+            }
+
+            .nav-right a:hover {
+                background-color: #caeeff;
+            }
+
+            .nav-left {
+                display: none;
+            }
+
+            .nav-left,
+            .nav-right {
                 flex-direction: column;
                 align-items: center;
+                width: 90%;
             }
 
-            .nav-left a, .nav-right a {
+            .nav-left a,
+            .nav-right a {
                 width: 100%;
                 text-align: center;
                 padding: 0.8rem;
-            }
-
-            .nav-left a:not(:last-child)::after,
-            .nav-right a:not(:last-child)::after {
-                display: none;
             }
         }
 
@@ -227,7 +268,7 @@
             align-items: center;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 890px) {
             .hero-section {
                 min-height: 93vh;
             }
@@ -240,7 +281,7 @@
             text-align: center;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 890px) {
             .player-h1 {
                 font-size: 18px;
             }
@@ -255,7 +296,7 @@
             padding-bottom: 5rem;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 890px) {
             .player-h2 {
                 font-size: 15px;
                 padding-top: 1rem;
@@ -271,7 +312,7 @@
             margin: 0 auto;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 890px) {
             .piplup-home {
                 width: 30%;
             }
@@ -295,7 +336,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 890px) {
             .dialogueBubble {
                 max-width: 500px;
                 border: 2px solid #003399;
@@ -318,7 +359,7 @@
             line-height: 1.5;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 890px) {
             .dialogue {
                 font-size: 14px;
             }
@@ -362,7 +403,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
