@@ -533,7 +533,8 @@
 
         const logo = document.querySelector('.logo');
         logo.addEventListener('click', (e) => {
-            e.preventDefault(); // prevent any default link behavior
+            e.preventDefault();
+            history.pushState("", document.title, window.location.pathname + window.location.search);
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
