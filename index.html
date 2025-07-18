@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hailey WB - Software Engineer Portfolio</title>
+    
+    <!-- Devicon link for badges -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
     <style>
         .press-start-2p-regular {
             font-family: "Press Start 2P", system-ui;
@@ -106,8 +110,8 @@
             font-size: 24px;
             color: #ffffff;
             text-align: center;
-            margin-bottom: 1rem;
-            scroll-margin-top: 200px
+            margin-bottom: 2rem;
+            scroll-margin-top: 430px
         }
 
         .section-title-dark {
@@ -116,7 +120,7 @@
             color: #3066BE;
             text-align: center;
             margin-bottom: 1rem;
-            scroll-margin-top: 200px
+            scroll-margin-top: 430px
         }
 
         /* === NAVIGATION BAR === */
@@ -204,14 +208,12 @@
 
         .nav-left a:hover,
         .nav-right a:hover {
-            /* Slight lift on hover for better interaction feedback */
             transform: translateY(-1px);
             box-shadow: 0 5px 0 #2A5AA0, 0 8px 16px rgba(0, 0, 0, 0.4);
         }
 
         .nav-left a:active,
         .nav-right a:active {
-            /* Sunken/depressed button effect */
             background-color: #3066BE;
             box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
             transform: translateY(2px);
@@ -377,14 +379,146 @@
                 height: 48px;
             }
         }
-
+        
+        /* === ABOUT SECTION === */
+        #about {
+            padding-bottom: 30px;
+        }
         .about-section {
             padding: 2rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
+        
+        .about-container {
+            display: flex;
+            gap: 20px;
+            align-items: stretch; 
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap; 
+        }
+        
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-family: "Press Start 2P", system-ui;
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .id-card {
+            width: 750px;
+            max-width: 90%; 
+        }
+
+        .id-main-content {
+            display: flex;
+            align-items: center;
+            gap: 40px; /* CHANGED: Increased space between photo and info */
+        }
+
+        .id-pic {
+            width: 128px;
+            height: 128px;
+            image-rendering: pixelated;
+            padding: 20px; /* CHANGED: Added padding around the photo */
+            box-sizing: content-box; /* Ensures padding adds to the size, not cuts into it */
+        }
+
+        .id-info-section {
+            width: 100%;
+        }
+
+        .id-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .id-info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .id-info-label {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .id-info-value {
+            background-color: #e0f7ff;
+            padding: 8px 15px;
+            border-radius: 10px;
+            min-width: 350px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .id-bio {
+            margin-top: 20px;
+            padding: 20px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            line-height: 1.5;
+            font-size: 18px;
+            color: #003399; 
+            flex-grow: 1; 
+        }
+
+        .badges-card {
+            width: 240px;
+        }
+
+        .badges-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            flex-grow: 1;
+            align-content: center;
+        }
+
+        .badge-icon {
+            font-size: 64px;
+            text-align: center;
+        }
+        
+        @media screen and (max-width: 890px) {
+             .about-container {
+                gap: 20px;
+            }
+            .id-main-content {
+                flex-direction: column;
+                gap: 20px; /* Reduce gap on small screens */
+            }
+            .id-info-row {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .id-info-value {
+                margin-top: 8px;
+                min-width: 0;
+            }
+             .badges-card {
+                margin-top: 20px; 
+            }
+        }
+
 
         .footerbar {
             display: flex;
@@ -447,7 +581,7 @@
                 <!-- Hero Section -->
                 <div class="hero-section">
                     <h1 class="player-h1">Hailey Wong-Budiman</h1>
-                    <h2 class="player-h2">&lt; Software Engineer &gt;</h2>
+                    <h2 class="player-h2">< Software Engineer ></h2>
                     <div class="piplup-home">
                         <img src="/assets/piplup.png" alt="Piplup">
                     </div>
@@ -467,14 +601,47 @@
             <div class="content-layer">
                 <div class="about-section">
                     <h2 class="section-title" id="about">About Me</h2>
-                    <div>
+                    <div class="about-container">
                         <!-- ID Card -->
-                        <div>
-
+                        <div class="card id-card">
+                            <div class="id-main-content">
+                                <img src="/assets/piplup.png" alt="Piplup" class="id-pic">
+                                <div class="id-info-section">
+                                    <div class="id-info-row">
+                                        <span class="id-info-label">Name</span>
+                                        <div class="id-info-value">Hailey Wong-Budiman</div>
+                                    </div>
+                                    <div class="id-info-row">
+                                        <span class="id-info-label">Education</span>
+                                        <div class="id-info-value">University of Rochester</div>
+                                    </div>
+                                    <div class="id-info-row">
+                                        <span class="id-info-label">Degree</span>
+                                        <div class="id-info-value">B.S. Computer Science (2027)</div>
+                                    </div>
+                                    <div class="id-info-row">
+                                        <span class="id-info-label">Hometown</span>
+                                        <div class="id-info-value">NYC</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="id-bio">
+                               Currently a Software Engineer intern at ThickLiaison, on a quest to build beautiful and impactful frontend solutions. My toolkit is ever-expanding, but I love working with technologies like React and JavaScript to bring ideas to life. My favorite side-quest involves discovering the best boba shops in NYC.
+                            </div>
                         </div>
                         <!-- Badges -->
-                        <div>
-
+                        <div class="card badges-card">
+                            <h3 class="badges-title">Badges</h3>
+                            <div class="badges-grid">
+                                <i class="devicon-react-original colored badge-icon"></i>
+                                <i class="devicon-html5-plain colored badge-icon"></i>
+                                <i class="devicon-python-plain colored badge-icon"></i>
+                                <i class="devicon-css3-plain colored badge-icon"></i>
+                                <i class="devicon-javascript-plain colored badge-icon"></i>
+                                <i class="devicon-git-plain colored badge-icon"></i>
+                                <i class="devicon-postgresql-plain colored badge-icon"></i>
+                                <i class="devicon-java-plain colored badge-icon"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
