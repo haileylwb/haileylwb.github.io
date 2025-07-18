@@ -23,16 +23,13 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            font: 'Lexend', sans-serif;
         }
 
-        /* Base section styling */
         .section {
             position: relative;
             min-height: 100vh;
         }
 
-        /* Layer 1: Gradient Background (deepest) */
         .gradient-layer {
             position: absolute;
             top: 0;
@@ -42,13 +39,11 @@
             z-index: 1;
         }
 
-        /* Wrapper for entire page to handle bubbles across all sections */
         .page-wrapper {
             position: relative;
             min-height: 100vh;
         }
 
-        /* Single bubbles layer that spans the entire page */
         .bubbles-layer {
             position: fixed;
             top: 0;
@@ -65,13 +60,21 @@
             pointer-events: none;
         }
 
-        /* Layer 3: Content (top) */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
         .content-layer {
             position: relative;
             z-index: 3;
         }
 
-        /* Section-specific gradients */
         .section-one .gradient-layer {
             background: linear-gradient(180deg, #ffffff 0%, #8DD6F7 50%, #3066BE 100%);
         }
@@ -92,145 +95,6 @@
             background: linear-gradient(180deg, #ffffff 0%, #8DD6F7 50%, #3066BE 100%);
         }
 
-        .navbar {
-            font-family: "Lexend", sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 2rem;
-            background: #3066BE;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .footerbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 2rem;
-            color: white;
-            background: #3066BE;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer {
-            padding-left: 1rem;
-            padding-right: 1rem;
-            text-align: center;
-        }
-
-        .logo {
-            height: 40px;
-            width: auto;
-        }
-
-        .nav-left {
-            display: flex;
-            gap: 0;
-            flex: 1;
-            justify-content: flex-start;
-            margin-left: 3rem;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 0;
-        }
-
-        .nav-left a,
-        .nav-right a {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.8rem 1.5rem;
-            transition: all 0.2s ease;
-            position: relative;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-left a:hover,
-        .nav-right a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-        }
-
-        .nav-left a:visited,
-        .nav-left a:active,
-        .nav-right a:visited,
-        .nav-right a:active {
-            color: #ffffff;
-        }
-
-        .nav-left a:focus,
-        .nav-right a:focus {
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-left a:not(:last-child)::after,
-        .nav-right a:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 20px;
-            width: 1px;
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-left a:last-child::after,
-        .nav-right a:last-child::after {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .nav-left {
-                margin-left: 0;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-left,
-            .nav-right {
-                gap: 0.5rem;
-            }
-
-            .nav-left a,
-            .nav-right a {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        .hero-section {
-            padding: 2rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        @media screen and (max-width: 600px) { 
-            .hero-section {
-                min-height: 80vh;
-            }
-        }
-
-        .about-section {
-            padding: 2rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
         .section-title {
             font-family: "Press Start 2P", system-ui;
             font-size: 24px;
@@ -247,28 +111,126 @@
             margin-bottom: 1rem;
         }
 
-        .section-content {
-            font-family: 'Lexend', sans-serif;
-            font-size: 16px;
-            color: #ffffff;
-            text-align: center;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        /* === NAVIGATION BAR === */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 2rem;
+            background: #3066BE;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
-        .section-content-dark {
-            font-family: "Lexend", sans-serif;
-            font-size: 16px;
-            color: #3066BE;
-            text-align: center;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .nav-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            image-rendering: pixelated;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+        }
+
+        .nav-left a, .nav-right a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-left a:hover, .nav-right a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-left a:not(:last-child)::after, .nav-right a:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20px;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #3066BE;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-left, .nav-right {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-left a, .nav-right a {
+                width: 100%;
+                text-align: center;
+                padding: 0.8rem;
+            }
+
+            .nav-left a:not(:last-child)::after,
+            .nav-right a:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        /* === HERO SECTION === */
+        .hero-section {
+            padding: 2rem;
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media screen and (max-width: 600px) {
+            .hero-section {
+                min-height: 93vh;
+            }
         }
 
         .player-h1 {
@@ -297,7 +259,7 @@
             .player-h2 {
                 font-size: 15px;
                 padding-top: 1rem;
-                padding-bottom: 2rem;
+                padding-bottom: 3rem;
             }
         }
 
@@ -309,24 +271,94 @@
             margin: 0 auto;
         }
 
+        @media screen and (max-width: 600px) {
+            .piplup-home {
+                width: 30%;
+            }
+        }
+
         .piplup-home img {
             width: 100%;
             height: auto;
+            padding-bottom: 3rem;
+            image-rendering: pixelated;
         }
 
-        /* Bubble Animation */
-        @keyframes float {
+        .dialogueBubble {
+            display: flex;
+            align-items: center;
+            background-color: #f5f8ff;
+            border: 3px solid #003399;
+            border-radius: 16px;
+            padding: 16px;
+            max-width: 750px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-            0%,
-            100% {
-                transform: translateY(0px);
+        @media screen and (max-width: 600px) {
+            .dialogueBubble {
+                max-width: 500px;
+                border: 2px solid #003399;
+                font-size: 14px;
+            }
+        }
+
+        .dialoguePic {
+            width: 64px;
+            height: 64px;
+            margin-right: 12px;
+            border-radius: 50%;
+            padding: 4px;
+            image-rendering: pixelated;
+        }
+
+        .dialogue {
+            color: #003399;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        @media screen and (max-width: 600px) {
+            .dialogue {
+                font-size: 14px;
             }
 
-            50% {
-                transform: translateY(-20px);
+            .dialoguePic {
+                width: 48px;
+                height: 48px;
             }
+        }
+
+        .about-section {
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .footerbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 2rem;
+            color: white;
+            background: #3066BE;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-align: center;
+        }
+
+        .footerPic {
+            height: 40px;
+            image-rendering: pixelated;
         }
     </style>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -337,23 +369,28 @@
     <div class="page-wrapper">
         <div class="bubbles-layer"></div>
 
-        <!-- Section 1: White to Blue Gradient -->
+        <!-- Section 1 -->
         <div class="section section-one">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <!-- Navigation Bar -->
                 <nav class="navbar">
-                    <img src="/assets/piplupHead.png" alt="Logo" class="logo">
-                    <div class="nav-left">
-                        <a href="#about">About</a>
-                        <a href="#experience">Experience</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#contact">Contact</a>
+                    <div class="nav-brand">
+                        <img src="/assets/piplupHead.png" alt="Logo" class="logo">
                     </div>
-                    <div class="nav-right">
-                        <a href="https://www.linkedin.com/in/haileylwb/">LinkedIn</a>
-                        <a href="https://medium.com/@haileylwb">Medium</a>
-                        <a href="https://github.com/haileylwb">Github</a>
+                    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">☰</button>
+                    <div class="nav-menu" id="nav-menu">
+                        <div class="nav-left">
+                            <a href="#about">About</a>
+                            <a href="#experience">Experience</a>
+                            <a href="#projects">Projects</a>
+                            <a href="#contact">Contact</a>
+                        </div>
+                        <div class="nav-right">
+                            <a href="https://www.linkedin.com/in/haileylwb/">LinkedIn</a>
+                            <a href="https://medium.com/@haileylwb">Medium</a>
+                            <a href="https://github.com/haileylwb">Github</a>
+                        </div>
                     </div>
                 </nav>
 
@@ -374,49 +411,45 @@
             </div>
         </div>
 
-        <!-- Section 2: Blue -->
+        <!-- About Section -->
         <div class="section section-two">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
                     <h2 class="section-title">About Me</h2>
-                    <p class="section-content">This is the about section with blue background.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: Blue to White Gradient -->
+        <!-- Experience Section -->
         <div class="section section-three">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
                     <h2 class="section-title">Experience</h2>
-                    <p class="section-content">This is the experience section with blue to white gradient.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 4: White -->
+        <!-- Projects Section -->
         <div class="section section-four">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
                     <h2 class="section-title-dark">Projects</h2>
-                    <p class="section-content-dark">This is the projects section with white background.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 5: White to Blue Gradient -->
+        <!-- Contact Section -->
         <div class="section section-five">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
                     <h2 class="section-title">Contact</h2>
-                    <p class="section-content">This is the contact section with white to blue gradient.</p>
                 </div>
 
-                <!-- Footer Bar -->
+                <!-- Footer -->
                 <nav class="footerbar">
                     <img src="/assets/piplup.png" alt="Logo" class="footerPic">
                     <div class="footer">
@@ -427,8 +460,17 @@
                 </nav>
             </div>
         </div>
-
     </div>
+
+    <!-- JavaScript for menu toggle -->
+    <script>
+        const hamburger = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
