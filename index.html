@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hailey WB - Software Engineer Portfolio</title>
-    
+
     <!-- Devicon link for badges -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
@@ -111,7 +111,6 @@
             color: #ffffff;
             text-align: center;
             margin-bottom: 2rem;
-            scroll-margin-top: 430px
         }
 
         .section-title-dark {
@@ -120,7 +119,6 @@
             color: #3066BE;
             text-align: center;
             margin-bottom: 1rem;
-            scroll-margin-top: 430px
         }
 
         /* === NAVIGATION BAR === */
@@ -379,11 +377,13 @@
                 height: 48px;
             }
         }
-        
+
         /* === ABOUT SECTION === */
         #about {
             padding-bottom: 30px;
+            scroll-margin-top: 430px
         }
+
         .about-section {
             padding: 2rem;
             min-height: 100vh;
@@ -392,16 +392,16 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .about-container {
             display: flex;
             gap: 20px;
-            align-items: stretch; 
+            align-items: stretch;
             justify-content: center;
             width: 100%;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
         }
-        
+
         .card {
             background-color: #ffffff;
             border-radius: 20px;
@@ -409,13 +409,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             color: #333;
             font-family: "Press Start 2P", system-ui;
-            display: flex; 
-            flex-direction: column; 
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .id-card {
             width: 750px;
-            max-width: 90%; 
+            max-width: 90%;
         }
 
         .id-main-content {
@@ -443,7 +443,7 @@
             margin-bottom: 15px;
             font-size: 18px;
         }
-        
+
         .id-info-row:last-child {
             margin-bottom: 0;
         }
@@ -469,8 +469,8 @@
             border-radius: 15px;
             line-height: 1.5;
             font-size: 18px;
-            color: #003399; 
-            flex-grow: 1; 
+            color: #003399;
+            flex-grow: 1;
         }
 
         .badges-card {
@@ -495,8 +495,10 @@
         .badge-icon {
             font-size: 64px;
             text-align: center;
-            position: relative; /* For pseudo-element positioning */
-            overflow: hidden;   /* To clip the shimmer effect */
+            position: relative;
+            /* For pseudo-element positioning */
+            overflow: hidden;
+            /* To clip the shimmer effect */
             transition: transform 0.2s ease;
         }
 
@@ -511,14 +513,12 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(
-                45deg,
-                rgba(255, 255, 255, 0.0) 0%,
-                rgba(255, 255, 255, 0.0) 40%,
-                rgba(255, 255, 255, 0.7) 50%,
-                rgba(255, 255, 255, 0.0) 60%,
-                rgba(255, 255, 255, 0.0) 100%
-            );
+            background: linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.0) 0%,
+                    rgba(255, 255, 255, 0.0) 40%,
+                    rgba(255, 255, 255, 0.7) 50%,
+                    rgba(255, 255, 255, 0.0) 60%,
+                    rgba(255, 255, 255, 0.0) 100%);
             transform: translateX(-75%) translateY(75%);
             /* No transition in the default state */
         }
@@ -528,30 +528,170 @@
             /* Add a slow, smooth transition only on hover */
             transition: transform 2s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        
+
         @media screen and (max-width: 890px) {
-             .about-container {
+            .about-container {
                 gap: 20px;
             }
+
             .id-main-content {
                 flex-direction: column;
                 gap: 20px;
             }
+
             .id-info-row {
                 flex-direction: column;
                 align-items: stretch;
                 text-align: center;
             }
+
             .id-info-value {
                 margin-top: 8px;
                 min-width: 0;
             }
-             .badges-card {
-                margin-top: 20px; 
+
+            .badges-card {
+                margin-top: 20px;
             }
         }
 
+        /* === EXPERIENCE SECTION === */
+        #experience {
+            padding-bottom: 30px;
+            scroll-margin-top: 530px
+        }
 
+        .experience-section {
+            padding: 2rem;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .experience-container {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 1020px;
+            align-items: flex-start;
+        }
+
+        .experience-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .experience-tab {
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: "Lexend", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 250px;
+        }
+
+        .experience-tab:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .experience-tab.active {
+            background-color: #ffffff;
+            color: #3066BE;
+            font-weight: 700;
+        }
+
+        .experience-content {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            color: #162F58;
+            flex-grow: 1;
+            min-height: 250px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 340px;
+        }
+
+        .experience-pane {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .experience-pane.active {
+            display: block;
+        }
+
+        .experience-content h3 {
+            font-family: "Lexend", sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .experience-content .experience-date {
+            font-family: "Lexend", sans-serif;
+            font-size: 16px;
+            color: #5a7cb5;
+            margin-bottom: 20px;
+        }
+
+        .experience-content .experience-description {
+            font-family: "Lexend", sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            padding-left: 20px;
+            /* Indents the bullet points */
+        }
+
+        .experience-content .experience-description li {
+            margin-bottom: 10px;
+            /* Adds space between bullet points */
+        }
+
+        @media screen and (max-width: 890px) {
+            .experience-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .experience-tabs {
+                flex-direction: column;
+                /* Stack tabs vertically */
+                width: 100%;
+                gap: 10px;
+            }
+
+            .experience-tab {
+                width: 100%;
+                /* Make tabs full-width */
+            }
+        }
+
+        /* === FOOTER === */
         .footerbar {
             display: flex;
             align-items: center;
@@ -613,7 +753,9 @@
                 <!-- Hero Section -->
                 <div class="hero-section">
                     <h1 class="player-h1">Hailey Wong-Budiman</h1>
-                    <h2 class="player-h2">< Software Engineer ></h2>
+                    <h2 class="player-h2">
+                        < Software Engineer>
+                    </h2>
                     <div class="piplup-home">
                         <img src="/assets/piplup.png" alt="Piplup">
                     </div>
@@ -658,7 +800,10 @@
                                 </div>
                             </div>
                             <div class="id-bio">
-                               Currently a Software Engineer intern at ThickLiaison, on a quest to build beautiful and impactful frontend solutions. My toolkit is ever-expanding, but I love working with technologies like React and JavaScript to bring ideas to life. My favorite side-quest involves discovering the best boba shops in NYC.
+                                Currently a Software Engineer intern at ThickLiaison, on a quest to build beautiful and
+                                impactful frontend solutions. My toolkit is ever-expanding, but I love working with
+                                technologies like React and JavaScript to bring ideas to life. My favorite side-quest
+                                involves discovering the best boba shops in NYC.
                             </div>
                         </div>
                         <!-- Badges -->
@@ -684,8 +829,70 @@
         <div class="section section-three">
             <div class="gradient-layer"></div>
             <div class="content-layer">
-                <div class="about-section">
-                    <h2 class="section-title" id="experience">Experience</h2>
+                <div class="experience-section">
+                    <div>
+                        <h2 class="section-title" id="experience">Experience</h2>
+                        <div class="experience-container">
+                            <div class="experience-tabs">
+                                <button class="experience-tab active" data-target="#exp1">ThickLiaison</button>
+                                <button class="experience-tab" data-target="#exp2">Computer Science Undergraduate
+                                    Council</button>
+                                <button class="experience-tab" data-target="#exp3">University of Rochester</button>
+                                <button class="experience-tab" data-target="#exp4">Google Code Next</button>
+                            </div>
+                            <div class="experience-content">
+                                <div class="experience-pane active" id="exp1">
+                                    <h3>Software Engineering Intern</h3>
+                                    <p class="experience-date">July 2025 - August 2025</p>
+                                    <ul class="experience-description">
+                                        <li>Engineered a full-stack website using React, Next.js, and TypeScript,
+                                            increasing page load speeds by 40% and boosted user session duration by 25%.
+                                        </li>
+                                        <li>Identified and patched 15+ critical security vulnerabilities, eliminating
+                                            100% of identified security threats through a comprehensive code audit and
+                                            remediation.</li>
+                                        <li>Reduced pre-deployment bugs by 30% through the design and implementation of
+                                            a reusable component library in TypeScript, improving code maintainability
+                                            and streamlining team development cycles.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="experience-pane" id="exp2">
+                                    <h3>Incoming Teaching Assistant</h3>
+                                    <p class="experience-date">Starting August 2025</p>
+                                    <ul class="experience-description">
+                                        <li>Instructing students in Data Structures & Algorithms, Discrete Mathematics,
+                                            and Advanced programming fundamentals.</li>
+                                    </ul>
+                                </div>
+                                <div class="experience-pane" id="exp3">
+                                    <h3>Research Assistant</h3>
+                                    <p class="experience-date">October 2024 - Present</p>
+                                    <ul class="experience-description">
+                                        <li>Engineered Python simulations of social opinion dynamics, generating
+                                            10,000,000+ data points for large-scale analysis.
+                                        </li>
+                                        <li>Developed statistical models that predicted opinion shifts with 99%
+                                            accuracy, enhancing model reliability across 1M+ simulations.</li>
+                                        <li>Built automated data pipelines and visualizations using Matplotlib,
+                                            accelerating insights on network influence by 3x.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="experience-pane" id="exp4">
+                                    <h3>Curriculum Developer</h3>
+                                    <p class="experience-date">June 2023 - August 2023</p>
+                                    <ul class="experience-description">
+                                        <li>Designed a 9-week SwiftUI curriculum, boosting student engagement by 30%
+                                            with interactive, accessible lessons.</li>
+                                        <li>Integrated 20+ iOS topics into real-world projects to boost engagement and
+                                            build Swift/SwiftUI fundamentals.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -694,7 +901,7 @@
         <div class="section section-four">
             <div class="gradient-layer"></div>
             <div class="content-layer">
-                <div class="about-section">
+                <div class="projects-section">
                     <h2 class="section-title-dark" id="projects">Projects</h2>
                 </div>
             </div>
@@ -704,24 +911,23 @@
         <div class="section section-five">
             <div class="gradient-layer"></div>
             <div class="content-layer">
-                <div class="about-section">
+                <div class="contact-section">
                     <h2 class="section-title" id="contact">Contact</h2>
                 </div>
             </div>
         </div>
 
         <!-- Footer -->
-                <nav class="footerbar">
-                    <img src="/assets/piplup.png" alt="Logo" class="footerPic">
-                    <div class="footer">
-                        © 2025 Hailey Wong-Budiman. Piplup © Nintendo. This is a personal project with no affiliation to
-                        Nintendo.
-                    </div>
-                    <img src="/assets/piplup.png" alt="Logo" class="footerPic">
-                </nav>
+        <nav class="footerbar">
+            <img src="/assets/piplup.png" alt="Logo" class="footerPic">
+            <div class="footer">
+                © 2025 Hailey Wong-Budiman. Piplup © Nintendo. This is a personal project with no affiliation to
+                Nintendo.
+            </div>
+            <img src="/assets/piplup.png" alt="Logo" class="footerPic">
+        </nav>
     </div>
 
-    <!-- JavaScript for menu toggle -->
     <script>
         const hamburger = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
@@ -737,6 +943,20 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        const tabs = document.querySelectorAll('.experience-tab');
+        const panes = document.querySelectorAll('.experience-pane');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = document.querySelector(tab.dataset.target);
+
+                tabs.forEach(t => t.classList.remove('active'));
+                panes.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                target.classList.add('active');
             });
         });
     </script>
