@@ -102,6 +102,10 @@
             background: #ffffff;
         }
 
+        .section-five {
+            min-height: 50vh;
+        }
+
         .section-five .gradient-layer {
             background: linear-gradient(180deg, #ffffff 0%, #8DD6F7 50%, #3066BE 100%);
         }
@@ -721,6 +725,40 @@
             }
         }
 
+        /* === CONTACT === */
+        #contact {
+            padding-bottom: 30px;
+        }
+
+        .contact {
+            display: flex;
+            align-items: center;
+            background-color: #f5f8ff;
+            border: 3px solid #003399;
+            border-radius: 16px;
+            padding: 16px;
+            max-width: 450px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media screen and (max-width: 890px) {
+            .contact {
+                max-width: 350px;
+                border: 2px solid #003399;
+                font-size: 14px;
+            }
+        }
+
+        .contact-section {
+            padding: 2rem;
+            min-height: 50vh;
+            display: grid;
+            place-items: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         /* === FOOTER === */
         .footerbar {
             display: flex;
@@ -748,7 +786,6 @@
                 font-size: 14px;
             }
         }
-
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -791,7 +828,7 @@
                 <div class="hero-section">
                     <h1 class="player-h1">Hailey Wong-Budiman</h1>
                     <h2 class="player-h2">
-                        < Software Engineer>
+                        < Software Engineer >
                     </h2>
                     <div class="piplup-home">
                         <img src="/assets/piplup.png" alt="Piplup">
@@ -949,7 +986,13 @@
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="contact-section">
-                    <h2 class="section-title">Contact</h2>
+                    <div>
+                        <h2 class="section-title-dark" id="contact">Contact</h2>
+                        <div class="contact">
+                            <img src="/assets/piplupHead.png" alt="Logo" class="dialoguePic">
+                            <p class="dialogue">Want to reach out? <br />Email: hwongbud@u.rochester.edu</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
