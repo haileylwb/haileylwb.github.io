@@ -18,6 +18,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 70px;
         }
 
         * {
@@ -381,7 +382,6 @@
         /* === ABOUT SECTION === */
         #about {
             padding-bottom: 30px;
-            scroll-margin-top: 430px
         }
 
         .about-section {
@@ -496,9 +496,7 @@
             font-size: 64px;
             text-align: center;
             position: relative;
-            /* For pseudo-element positioning */
             overflow: hidden;
-            /* To clip the shimmer effect */
             transition: transform 0.2s ease;
         }
 
@@ -520,12 +518,10 @@
                     rgba(255, 255, 255, 0.0) 60%,
                     rgba(255, 255, 255, 0.0) 100%);
             transform: translateX(-75%) translateY(75%);
-            /* No transition in the default state */
         }
 
         .badge-icon:hover::after {
             transform: translateX(75%) translateY(-75%);
-            /* Add a slow, smooth transition only on hover */
             transition: transform 2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
@@ -548,17 +544,40 @@
             .id-info-value {
                 margin-top: 8px;
                 min-width: 0;
+                font-size: 14px;
             }
 
             .badges-card {
                 margin-top: 20px;
+            }
+
+            .id-info-row {
+                font-size: 14px;
+            }
+
+
+            .id-info-label {
+                font-size: 14px;
+            }
+
+
+            .id-bio {
+                font-size: 14px;
+            }
+
+            .badges-title {
+                font-size: 14px;
+            }
+
+            .id-pic {
+                width: 81px;
+                height: 81px;
             }
         }
 
         /* === EXPERIENCE SECTION === */
         #experience {
             padding-bottom: 30px;
-            scroll-margin-top: 530px
         }
 
         .experience-section {
@@ -664,12 +683,10 @@
             font-size: 16px;
             line-height: 1.5;
             padding-left: 20px;
-            /* Indents the bullet points */
         }
 
         .experience-content .experience-description li {
             margin-bottom: 10px;
-            /* Adds space between bullet points */
         }
 
         @media screen and (max-width: 890px) {
@@ -680,14 +697,27 @@
 
             .experience-tabs {
                 flex-direction: column;
-                /* Stack tabs vertically */
                 width: 100%;
                 gap: 10px;
             }
 
             .experience-tab {
                 width: 100%;
-                /* Make tabs full-width */
+                font-size: 14px;
+            }
+
+            .experience-content h3 {
+                font-family: "Lexend", sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            .experience-content .experience-description {
+                font-family: "Lexend", sans-serif;
+                font-size: 14px;
+                line-height: 1.5;
+                padding-left: 20px;
             }
         }
 
@@ -712,6 +742,13 @@
             height: 40px;
             image-rendering: pixelated;
         }
+
+        @media screen and (max-width: 890px) {
+            .footer {
+                font-size: 14px;
+            }
+        }
+
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -770,11 +807,11 @@
         </div>
 
         <!-- About Section -->
-        <div class="section section-two">
+        <div id="about" class="section section-two">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
-                    <h2 class="section-title" id="about">About Me</h2>
+                    <h2 class="section-title">About Me</h2>
                     <div class="about-container">
                         <!-- ID Card -->
                         <div class="card id-card">
@@ -826,12 +863,12 @@
         </div>
 
         <!-- Experience Section -->
-        <div class="section section-three">
+        <div id="experience" class="section section-three">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="experience-section">
                     <div>
-                        <h2 class="section-title" id="experience">Experience</h2>
+                        <h2 class="section-title">Experience</h2>
                         <div class="experience-container">
                             <div class="experience-tabs">
                                 <button class="experience-tab active" data-target="#exp1">ThickLiaison</button>
@@ -898,21 +935,21 @@
         </div>
 
         <!-- Projects Section -->
-        <div class="section section-four">
+        <div id="projects" class="section section-four">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="projects-section">
-                    <h2 class="section-title-dark" id="projects">Projects</h2>
+                    <h2 class="section-title-dark">Projects</h2>
                 </div>
             </div>
         </div>
 
         <!-- Contact Section -->
-        <div class="section section-five">
+        <div id="contact" class="section section-five">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="contact-section">
-                    <h2 class="section-title" id="contact">Contact</h2>
+                    <h2 class="section-title">Contact</h2>
                 </div>
             </div>
         </div>
