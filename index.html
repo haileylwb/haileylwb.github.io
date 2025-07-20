@@ -748,7 +748,7 @@
             font-family: "Press Start 2P", system-ui;
             font-size: 12px;
             color: #0a2540;
-            background-color: #a3d5f7; 
+            background-color: #a3d5f7;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -783,15 +783,16 @@
             border-radius: 15px;
             padding: 1.5rem;
             width: 300px;
-            min-height: 420px; 
+            min-height: 420px;
             /* box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4); */
             display: flex;
             flex-direction: column;
-            justify-content: space-between; 
+            justify-content: space-between;
             gap: 1rem;
             /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
         }
-/* 
+
+        /* 
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.3);
@@ -841,13 +842,202 @@
         .github-btn:hover {
             background-color: #3066BE;
         }
-        
+
         @media screen and (max-width: 480px) {
             .project-name {
                 font-size: 15px;
             }
+
             .project-description {
                 font-size: 14px;
+            }
+        }
+
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .carousel-wrapper {
+            width: 960px;
+            /* 3 cards × 300px + 2 × 30px gap */
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease;
+            width: max-content;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #3066BE;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background-color: #2A5AA0;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-btn-left {
+            left: -70px;
+        }
+
+        .carousel-btn-right {
+            right: -70px;
+        }
+
+        .carousel-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .project-card {
+            min-width: 300px;
+            max-width: 300px;
+            flex-shrink: 0;
+        }
+
+        @media screen and (max-width: 1140px) {
+            .carousel-container {
+                max-width: 95%;
+            }
+
+            .carousel-btn-left {
+                left: -60px;
+            }
+
+            .carousel-btn-right {
+                right: -60px;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .carousel-wrapper {
+                width: 660px;
+            }
+
+            .carousel-track {
+                gap: 60px;
+            }
+
+            .carousel-btn-left {
+                left: -40px;
+            }
+
+            .carousel-btn-right {
+                right: -40px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .carousel-container {
+                padding: 0 15px;
+            }
+
+            .carousel-wrapper {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .carousel-track {
+                gap: 20px;
+            }
+
+            .project-card {
+                min-width: 280px;
+                max-width: 280px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-btn-left {
+                left: -25px;
+            }
+
+            .carousel-btn-right {
+                right: -25px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .carousel-container {
+                padding: 0 10px;
+            }
+
+            .carousel-wrapper {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .project-card {
+                min-width: 260px;
+                max-width: 260px;
+                padding: 1rem;
+            }
+
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .carousel-btn-left {
+                left: -20px;
+            }
+
+            .carousel-btn-right {
+                right: -20px;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            .carousel-wrapper {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .project-card {
+                min-width: 240px;
+                max-width: 240px;
+                padding: 0.8rem;
+            }
+
+            .carousel-btn-left {
+                left: -15px;
+            }
+
+            .carousel-btn-right {
+                right: -15px;
             }
         }
 
@@ -950,7 +1140,7 @@
                 <div class="hero-section">
                     <h1 class="player-h1">Hailey Wong-Budiman</h1>
                     <h2 class="player-h2">
-                        < Software Engineer >
+                        < Software Engineer>
                     </h2>
                     <div class="piplup-home">
                         <img src="/assets/piplup.png" alt="Piplup">
@@ -1107,29 +1297,92 @@
                         <button class="filter-btn" data-filter="other">Other</button>
                     </div>
 
-                    <div class="projects-container">
-                        <div class="project-card" data-category="web">
-                            <div class="project-image-placeholder"></div>
-                            <h3 class="project-name">Project Name</h3>
-                            <p class="project-description">[project description]</p>
-                            <a href="#" class="github-btn">Github →</a>
+                    <div class="carousel-container">
+                        <button class="carousel-btn carousel-btn-left" id="prevBtn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+
+                        <div class="carousel-wrapper">
+                            <div class="projects-container carousel-track" id="carousel-track">
+                                <div class="project-card" data-category="web">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Web Project 1</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="mobile">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Mobile App 1</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="other">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Other 1</h3>
+                                    <p class="project-description">[Description]
+                                    </p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="web">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Web Project 2</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="mobile">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Mobile App 2</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="other">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Other 2</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="web">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Web Project 3</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="mobile">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Mobile App 3</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                                <div class="project-card" data-category="other">
+                                    <div class="project-image-placeholder"></div>
+                                    <h3 class="project-name">Other 3</h3>
+                                    <p class="project-description">[Description]</p>
+                                    <a href="#" class="github-btn">Github →</a>
+                                </div>
+
+                            </div>
                         </div>
 
-                        <div class="project-card" data-category="mobile">
-                            <div class="project-image-placeholder"></div>
-                            <h3 class="project-name">Project Name</h3>
-                            <p class="project-description">[project description]</p>
-                            <a href="#" class="github-btn">Github →</a>
-                        </div>
-
-                        <div class="project-card" data-category="other">
-                            <div class="project-image-placeholder"></div>
-                            <h3 class="project-name">Project Name</h3>
-                            <p class="project-description">[project description]</p>
-                            <a href="#" class="github-btn">Github →</a>
-                        </div>
+                        <button class="carousel-btn carousel-btn-right" id="nextBtn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -1212,6 +1465,132 @@
                             card.style.display = 'none';
                         }
                     });
+                });
+            });
+        });
+
+        class ProjectCarousel {
+            constructor() {
+                this.track = document.getElementById('carousel-track');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.cards = Array.from(this.track.children);
+                this.currentIndex = 0;
+                this.cardsPerView = this.getCardsPerView();
+                this.filteredCards = [...this.cards];
+
+                this.init();
+                window.addEventListener('resize', () => {
+                    this.cardsPerView = this.getCardsPerView();
+                    this.updateCarousel();
+                });
+            }
+
+            getCardsPerView() {
+                if (window.innerWidth <= 380) return 1;
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 768) return 1;
+                if (window.innerWidth <= 1024) return 2;
+                return 3;
+            }
+
+            init() {
+                this.prevBtn.addEventListener('click', () => this.previousSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                this.updateCarousel();
+            }
+
+            updateCarousel() {
+                let cardWidth, gap;
+
+                if (window.innerWidth <= 380) {
+                    cardWidth = 240;
+                    gap = 20;
+                } else if (window.innerWidth <= 480) {
+                    cardWidth = 260;
+                    gap = 20;
+                } else if (window.innerWidth <= 768) {
+                    cardWidth = 280;
+                    gap = 20;
+                } else if (window.innerWidth <= 1024) {
+                    cardWidth = 300;
+                    gap = 60;
+                } else {
+                    cardWidth = 300;
+                    gap = 30;
+                }
+
+                const translateX = -(this.currentIndex * (cardWidth + gap));
+
+                this.track.style.transform = `translateX(${translateX}px)`;
+                this.updateButtonVisibility();
+            }
+
+            updateButtonVisibility() {
+                const maxIndex = Math.max(0, this.filteredCards.length - this.cardsPerView);
+
+                if (this.currentIndex <= 0) {
+                    this.prevBtn.classList.add('hidden');
+                } else {
+                    this.prevBtn.classList.remove('hidden');
+                }
+
+                if (this.currentIndex >= maxIndex) {
+                    this.nextBtn.classList.add('hidden');
+                } else {
+                    this.nextBtn.classList.remove('hidden');
+                }
+
+                if (this.filteredCards.length <= this.cardsPerView) {
+                    this.prevBtn.classList.add('hidden');
+                    this.nextBtn.classList.add('hidden');
+                }
+            }
+
+            previousSlide() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateCarousel();
+                }
+            }
+
+            nextSlide() {
+                const maxIndex = Math.max(0, this.filteredCards.length - this.cardsPerView);
+                if (this.currentIndex < maxIndex) {
+                    this.currentIndex++;
+                    this.updateCarousel();
+                }
+            }
+
+            filterProjects(category) {
+                this.cards.forEach(card => card.style.display = 'none');
+
+                if (category === 'all') {
+                    this.filteredCards = [...this.cards];
+                } else {
+                    this.filteredCards = this.cards.filter(card =>
+                        card.getAttribute('data-category') === category
+                    );
+                }
+
+                this.filteredCards.forEach(card => card.style.display = 'flex');
+
+                this.currentIndex = 0;
+                this.updateCarousel();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = new ProjectCarousel();
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+                    carousel.filterProjects(filter);
                 });
             });
         });
