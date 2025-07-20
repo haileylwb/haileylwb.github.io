@@ -384,7 +384,7 @@
         }
 
         /* === ABOUT SECTION === */
-        #about {
+        .extra-padding {
             padding-bottom: 30px;
         }
 
@@ -725,11 +725,133 @@
             }
         }
 
-        /* === CONTACT === */
-        #contact {
-            padding-bottom: 30px;
+        /* === PROJECTS SECTION === */
+        .projects-section {
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
+        .project-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            font-family: "Press Start 2P", system-ui;
+            font-size: 12px;
+            color: #0a2540;
+            background-color: #a3d5f7; 
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px #2A5AA0;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px #3066BE;
+        }
+
+        .filter-btn:active,
+        .filter-btn.active {
+            transform: translateY(2px);
+            box-shadow: 0 2px #162F58;
+            background-color: #3b72cc;
+            color: #ffffff;
+        }
+
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding-top: 20px;
+        }
+
+        .project-card {
+            border: 3px solid #000000;
+            background-color: #9cc7e3;
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 300px;
+            min-height: 420px; 
+            /* box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4); */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            gap: 1rem;
+            /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+        }
+/* 
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.3);
+        } */
+
+        .project-card {
+            background-color: #9cc7e3;
+        }
+
+        .project-image-placeholder {
+            background-color: #ffffff;
+            border: 8px solid #000000;
+            border-radius: 8px;
+            height: 150px;
+            width: 100%;
+        }
+
+        .project-name {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.1rem;
+            margin: 0;
+            text-align: center;
+        }
+
+        .project-description {
+            font-family: "Lexend", sans-serif;
+            font-size: 18px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .github-btn {
+            background-color: #3b72cc;
+            color: #ffffff;
+            font-family: 'Lexend', sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            text-align: center;
+            align-self: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .github-btn:hover {
+            background-color: #3066BE;
+        }
+        
+        @media screen and (max-width: 480px) {
+            .project-name {
+                font-size: 15px;
+            }
+            .project-description {
+                font-size: 14px;
+            }
+        }
+
+        /* === CONTACT === */
         .contact {
             display: flex;
             align-items: center;
@@ -848,7 +970,7 @@
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="about-section">
-                    <h2 class="section-title">About Me</h2>
+                    <h2 class="section-title extra-padding">About Me</h2>
                     <div class="about-container">
                         <!-- ID Card -->
                         <div class="card id-card">
@@ -905,7 +1027,7 @@
             <div class="content-layer">
                 <div class="experience-section">
                     <div>
-                        <h2 class="section-title">Experience</h2>
+                        <h2 class="section-title extra-padding">Experience</h2>
                         <div class="experience-container">
                             <div class="experience-tabs">
                                 <button class="experience-tab active" data-target="#exp1">ThickLiaison</button>
@@ -976,7 +1098,38 @@
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="projects-section">
-                    <h2 class="section-title-dark">Projects</h2>
+                    <h2 class="section-title-dark extra-padding">Projects</h2>
+
+                    <div class="project-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="web">Web Apps</button>
+                        <button class="filter-btn" data-filter="mobile">Mobile</button>
+                        <button class="filter-btn" data-filter="other">Other</button>
+                    </div>
+
+                    <div class="projects-container">
+                        <div class="project-card" data-category="web">
+                            <div class="project-image-placeholder"></div>
+                            <h3 class="project-name">Project Name</h3>
+                            <p class="project-description">[project description]</p>
+                            <a href="#" class="github-btn">Github →</a>
+                        </div>
+
+                        <div class="project-card" data-category="mobile">
+                            <div class="project-image-placeholder"></div>
+                            <h3 class="project-name">Project Name</h3>
+                            <p class="project-description">[project description]</p>
+                            <a href="#" class="github-btn">Github →</a>
+                        </div>
+
+                        <div class="project-card" data-category="other">
+                            <div class="project-image-placeholder"></div>
+                            <h3 class="project-name">Project Name</h3>
+                            <p class="project-description">[project description]</p>
+                            <a href="#" class="github-btn">Github →</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -987,7 +1140,7 @@
             <div class="content-layer">
                 <div class="contact-section">
                     <div>
-                        <h2 class="section-title-dark" id="contact">Contact</h2>
+                        <h2 class="section-title-dark extra-padding" id="contact">Contact</h2>
                         <div class="contact">
                             <img src="/assets/piplupHead.png" alt="Logo" class="dialoguePic">
                             <p class="dialogue">Want to reach out? <br />Email: hwongbud@u.rochester.edu</p>
@@ -1037,6 +1190,29 @@
 
                 tab.classList.add('active');
                 target.classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'all' || filter === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
             });
         });
     </script>
