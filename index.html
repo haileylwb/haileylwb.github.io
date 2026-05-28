@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hailey WB - Software Engineer Portfolio</title>
+    <title>Hailey WB - Portfolio</title>
+
+    <!-- Website Favicon -->
+    <link rel="icon" type="image/png" href="/assets/piplupHead.png">
 
     <!-- Devicon link for badges -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
@@ -190,20 +193,6 @@
             letter-spacing: 0.3px;
             border-radius: 8px;
             overflow: hidden;
-        }
-
-        .nav-left a::before,
-        .nav-right a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            border-radius: 8px;
-            transform: scale(0);
-            transition: all 0.4s;
         }
 
         .nav-left a::before,
@@ -597,26 +586,30 @@
             }
         }
 
-        /* === EXPERIENCE SECTION === */
+        /* === EXPERIENCE & LEADERSHIP SECTIONS === */
         #experience {
-            padding-bottom: 30px;
+            padding-bottom: 50px;
         }
 
         .experience-section {
-            padding: 2rem;
+            padding: 4rem 2rem;
             min-height: 100vh;
-            display: grid;
-            place-items: center;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            gap: 4rem; /* Adds space between experience and leadership blocks */
+        }
+
+        .experience-container-wrapper {
+            width: 100%;
+            max-width: 1020px;
         }
 
         .experience-container {
             display: flex;
             gap: 20px;
             width: 100%;
-            max-width: 1020px;
             align-items: flex-start;
         }
 
@@ -712,6 +705,11 @@
         }
 
         @media screen and (max-width: 890px) {
+            .experience-section {
+                padding: 2rem 1rem;
+                gap: 3rem;
+            }
+
             .experience-container {
                 flex-direction: column;
                 gap: 20px;
@@ -1043,11 +1041,11 @@
                                     </div>
                                     <div class="id-info-row">
                                         <span class="id-info-label">Education</span>
-                                        <div class="id-info-value">University of Rochester</div>
+                                        <div class="id-info-value">University of Rochester '27</div>
                                     </div>
                                     <div class="id-info-row">
-                                        <span class="id-info-label">Degree</span>
-                                        <div class="id-info-value">B.S. Computer Science (2027)</div>
+                                        <span class="id-info-label">Major(s)</span>
+                                        <div class="id-info-value">Computer Science & Business</div>
                                     </div>
                                     <div class="id-info-row">
                                         <span class="id-info-label">Hometown</span>
@@ -1056,9 +1054,9 @@
                                 </div>
                             </div>
                             <div class="id-bio">
-                                Currently a Software Engineer intern at ThickLiaison, on a quest to build beautiful and
-                                impactful frontend solutions. My toolkit is ever-expanding, but I love working with
-                                technologies like React and JavaScript to bring ideas to life. My favorite side-quest
+                                Currently an IT Intern at NYSIF, on a quest to build beautiful and
+                                impactful solutions. My toolkit is ever-expanding, but I love working with
+                                technologies like SQL, React, and JavaScript to bring ideas to life. My favorite side-quest
                                 involves discovering the best boba shops in NYC.
                             </div>
                         </div>
@@ -1081,23 +1079,32 @@
             </div>
         </div>
 
-        <!-- Experience Section -->
+        <!-- Experience & Leadership Section -->
         <div id="experience" class="section section-three">
             <div class="gradient-layer"></div>
             <div class="content-layer">
                 <div class="experience-section">
-                    <div>
+                    
+                    <!-- Professional Experience Container -->
+                    <div class="experience-container-wrapper">
                         <h2 class="section-title extra-padding">Experience</h2>
                         <div class="experience-container">
                             <div class="experience-tabs">
-                                <button class="experience-tab active" data-target="#exp1">ThickLiaison</button>
-                                <button class="experience-tab" data-target="#exp2">Computer Science Undergraduate
-                                    Council</button>
+                                <button class="experience-tab active" data-target="#exp1">NYS Insurance Fund</button>
+                                <button class="experience-tab" data-target="#exp2">ThickLiaison</button>
                                 <button class="experience-tab" data-target="#exp3">University of Rochester</button>
                                 <button class="experience-tab" data-target="#exp4">Google Code Next</button>
                             </div>
+                            
                             <div class="experience-content">
                                 <div class="experience-pane active" id="exp1">
+                                    <h3>Incoming IT Intern</h3>
+                                    <p class="experience-date">Starting May 2026</p>
+                                    <ul class="experience-description">
+                                        <li>Nothing here yet.</li>
+                                    </ul>
+                                </div>
+                                <div class="experience-pane" id="exp2">
                                     <h3>Software Engineering Intern</h3>
                                     <p class="experience-date">July 2025 - August 2025</p>
                                     <ul class="experience-description">
@@ -1108,17 +1115,8 @@
                                             100% of identified security threats through a comprehensive code audit and
                                             remediation.</li>
                                         <li>Reduced pre-deployment bugs by 30% through the design and implementation of
-                                            a reusable component library in TypeScript, improving code maintainability
-                                            and streamlining team development cycles.
+                                            a reusable component library in TypeScript, improving code maintainability.
                                         </li>
-                                    </ul>
-                                </div>
-                                <div class="experience-pane" id="exp2">
-                                    <h3>Incoming Teaching Assistant</h3>
-                                    <p class="experience-date">Starting August 2025</p>
-                                    <ul class="experience-description">
-                                        <li>Instructing students in Data Structures & Algorithms, Discrete Mathematics,
-                                            and Advanced programming fundamentals.</li>
                                     </ul>
                                 </div>
                                 <div class="experience-pane" id="exp3">
@@ -1143,6 +1141,35 @@
                                             with interactive, accessible lessons.</li>
                                         <li>Integrated 20+ iOS topics into real-world projects to boost engagement and
                                             build Swift/SwiftUI fundamentals.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership Container -->
+                    <div class="experience-container-wrapper">
+                        <h2 class="section-title extra-padding">Leadership</h2>
+                        <div class="experience-container">
+                            <div class="experience-tabs">
+                                <button class="experience-tab active" data-target="#lead1">Google Developer Student Club</button>
+                                <button class="experience-tab" data-target="#lead2">Computer Science Undergraduate Council</button>
+                            </div>
+                            <div class="experience-content">
+                                <div class="experience-pane active" id="lead1">
+                                    <h3>President</h3>
+                                    <p class="experience-date">September 2024 - Present</p>
+                                    <ul class="experience-description">
+                                        <li>Nothing here yet.</li>
+                                        <li>Nothing here yet.</li>
+                                    </ul>
+                                </div>
+                                <div class="experience-pane" id="lead2">
+                                    <h3>Tech Lead</h3>
+                                    <p class="experience-date">January 2024 - Present</p>
+                                    <ul class="experience-description">
+                                        <li>Nothing here yet.</li>
+                                        <li>Nothing here yet.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1288,17 +1315,24 @@
             });
         });
 
-        const tabs = document.querySelectorAll('.experience-tab');
-        const panes = document.querySelectorAll('.experience-pane');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = document.querySelector(tab.dataset.target);
+        // Tab selection scoped inside each container element
+        const containers = document.querySelectorAll('.experience-container');
+        containers.forEach(container => {
+            const tabs = container.querySelectorAll('.experience-tab');
+            const panes = container.querySelectorAll('.experience-pane');
 
-                tabs.forEach(t => t.classList.remove('active'));
-                panes.forEach(p => p.classList.remove('active'));
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = container.querySelector(tab.dataset.target);
+                    if (!target) return;
 
-                tab.classList.add('active');
-                target.classList.add('active');
+                    // Remove active states only within the parent container context
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panes.forEach(p => p.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    target.classList.add('active');
+                });
             });
         });
     </script>
