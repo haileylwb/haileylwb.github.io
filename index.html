@@ -132,10 +132,13 @@
             align-items: center;
             justify-content: space-between;
             padding: 0.75rem 2rem;
-            background: #3066BE;
+            background: rgba(48, 102, 190, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-brand {
@@ -203,16 +206,24 @@
             transition: all 0.4s;
         }
 
-        .nav-left a:hover::before,
-        .nav-right a:hover::before {
-            opacity: 1;
-            transform: scale(1);
+        .nav-left a::before,
+        .nav-right a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            border-radius: 8px;
+            transform: scale(0);
+            transition: all 0.4s;
         }
 
         .nav-left a:hover,
         .nav-right a:hover {
             transform: translateY(-1px);
-            box-shadow: 0 5px 0 #2A5AA0, 0 8px 16px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 5px 0 #2A5AA0, 0 8px 166px rgba(0, 0, 0, 0.4);
         }
 
         .nav-left a:active,
@@ -273,8 +284,8 @@
 
         /* === HERO SECTION === */
         .hero-section {
-            padding: 2rem;
-            min-height: 95vh;
+            padding: 4rem 2rem;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -283,7 +294,8 @@
 
         @media screen and (max-width: 890px) {
             .hero-section {
-                min-height: 93vh;
+                padding: 2rem 1rem;
+                min-height: 85vh;
             }
         }
 
@@ -302,18 +314,18 @@
 
         .player-h2 {
             font-family: "Press Start 2P", system-ui;
-            font-size: 32px;
+            font-size: 20px;
             color: #162F58;
             text-align: center;
-            padding-top: 2rem;
-            padding-bottom: 5rem;
+            padding-top: 1rem;
+            padding-bottom: 2.5rem;
         }
 
         @media screen and (max-width: 890px) {
             .player-h2 {
-                font-size: 15px;
-                padding-top: 1rem;
-                padding-bottom: 3rem;
+                font-size: 13px;
+                padding-top: 0.75rem;
+                padding-bottom: 1.5rem;
             }
         }
 
@@ -334,8 +346,14 @@
         .piplup-home img {
             width: 100%;
             height: auto;
-            padding-bottom: 3rem;
+            padding-bottom: 2.5rem;
             image-rendering: pixelated;
+        }
+
+        @media screen and (max-width: 890px) {
+            .piplup-home img {
+                padding-bottom: 1.5rem;
+            }
         }
 
         .dialogueBubble {
@@ -727,306 +745,169 @@
 
         /* === PROJECTS SECTION === */
         .projects-section {
-            padding: 2rem;
+            padding: 4rem 2rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
         }
 
-        .project-filters {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            font-family: "Press Start 2P", system-ui;
-            font-size: 12px;
-            color: #0a2540;
-            background-color: #9ad7f4;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px #2A5AA0;
-        }
-
-        .filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px #3066BE;
-        }
-
-        .filter-btn:active,
-        .filter-btn.active {
-            transform: translateY(2px);
-            box-shadow: 0 2px #162F58;
-            background-color: #3b72cc;
-            color: #ffffff;
-        }
-
-        .projects-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            padding-top: 20px;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Exactly 2 projects per row on desktop */
+            gap: 2.5rem 2.5rem;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
         }
 
         .project-card {
-            border: 3px solid #000000;
-            background: linear-gradient(180deg, #3066BE 0%, #8DD6F7 100%);
-            border-radius: 15px;
-            padding: 1.5rem;
-            width: 300px;
-            min-height: 420px;
+            border: 2px solid #a5c2eb; /* Lightweight minimalist border */
+            border-radius: 12px; /* Slightly rounded corners */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            gap: 1rem;
+            overflow: hidden; /* Clips elements matching rounded borders */
+            height: 380px; /* Uniform height for structure */
+            box-shadow: 4px 4px 0px #cbdff5; /* Pastel offset shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
+        /* Different shades of lighter, minimal blue */
+        .project-card.card-web {
+            background-color: #f5f9ff;
+        }
+
+        .project-card.card-mobile {
+            background-color: #edf3fc;
+        }
+
+        .project-card.card-data {
+            background-color: #e4eefb;
+        }
+
+        .project-card.card-other {
+            background-color: #f0f4fc;
+        }
+
+        .project-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #8caed6;
+        }
+
+        /* Top 70% of the Box */
         .project-image-placeholder {
-            background-color: #ffffff;
-            border: 8px solid #000000;
-            border-radius: 8px;
-            height: 150px;
+            height: 70%;
             width: 100%;
+            border-bottom: 2px solid #a5c2eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Accompanying placeholder light accents */
+        .card-web .project-image-placeholder {
+            background-color: #e6f0fa;
+        }
+
+        .card-mobile .project-image-placeholder {
+            background-color: #dae5f2;
+        }
+
+        .card-data .project-image-placeholder {
+            background-color: #cfdcea;
+        }
+
+        .card-other .project-image-placeholder {
+            background-color: #dbe4f0;
+        }
+
+        /* Scanline effect over placeholder image canvas */
+        .project-image-placeholder::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.04) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        .placeholder-text {
+            font-family: "Press Start 2P", system-ui;
+            font-size: 10px;
+            color: #3066BE;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Bottom 30% of the Box */
+        .project-card-footer {
+            height: 30%;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background-color: #ffffff; /* Explicitly white background */
+        }
+
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow: hidden;
         }
 
         .project-name {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.1rem;
+            font-size: 13px; /* Slightly larger project name */
             margin: 0;
-            text-align: center;
-            color: #ffffff;
+            color: #3066BE; /* Updated color code */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .project-description {
             font-family: "Lexend", sans-serif;
-            font-size: 18px;
+            font-size: 13px;
+            color: #555555;
             margin: 0;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        .github-btn {
-            background-color: #3b72cc;
-            color: #ffffff;
-            font-family: 'Lexend', sans-serif;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: none;
-            text-align: center;
-            align-self: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .github-btn:hover {
-            background-color: #3066BE;
-        }
-
-        @media screen and (max-width: 480px) {
-            .project-name {
-                font-size: 15px;
-            }
-
-            .project-description {
-                font-size: 14px;
-            }
-        }
-
-        .carousel-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-top: 20px;
-        }
-
-        .carousel-wrapper {
-            width: 960px;
+            white-space: nowrap;
             overflow: hidden;
-            border-radius: 15px;
+            text-overflow: ellipsis;
         }
 
-        .carousel-track {
-            display: flex;
-            gap: 30px;
-            transition: transform 0.5s ease;
-            width: max-content;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #3066BE;
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
+        /* Minimalist Redirect Arrow Link */
+        .github-arrow-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .carousel-btn:hover {
-            background-color: #2A5AA0;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-btn:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-
-        .carousel-btn-left {
-            left: -70px;
-        }
-
-        .carousel-btn-right {
-            right: -70px;
-        }
-
-        .carousel-btn.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .project-card {
-            min-width: 300px;
-            max-width: 300px;
+            color: #3066BE;
+            text-decoration: none;
+            transition: transform 0.2s ease, color 0.2s ease;
             flex-shrink: 0;
         }
 
-        @media screen and (max-width: 1140px) {
-            .carousel-container {
-                max-width: 95%;
-            }
-
-            .carousel-btn-left {
-                left: -60px;
-            }
-
-            .carousel-btn-right {
-                right: -60px;
-            }
-        }
-
-        @media screen and (max-width: 1024px) {
-            .carousel-wrapper {
-                width: 660px;
-            }
-
-            .carousel-track {
-                gap: 60px;
-            }
-
-            .carousel-btn-left {
-                left: -40px;
-            }
-
-            .carousel-btn-right {
-                right: -40px;
-            }
+        .github-arrow-link:hover {
+            color: #162F58;
+            transform: translate(2px, -2px); /* Subtly shifts pointing direction on hover */
         }
 
         @media screen and (max-width: 768px) {
-            .carousel-container {
-                padding: 0 15px;
-            }
-
-            .carousel-wrapper {
-                width: 100%;
-                max-width: 320px;
-            }
-
-            .carousel-track {
-                gap: 20px;
+            .projects-grid {
+                grid-template-columns: 1fr; /* Stack one card per row on small viewports */
+                max-width: 450px;
             }
 
             .project-card {
-                min-width: 280px;
-                max-width: 280px;
-            }
-
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-            }
-
-            .carousel-btn-left {
-                left: -25px;
-            }
-
-            .carousel-btn-right {
-                right: -25px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .carousel-container {
-                padding: 0 10px;
-            }
-
-            .carousel-wrapper {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .project-card {
-                min-width: 260px;
-                max-width: 260px;
-                padding: 1rem;
-            }
-
-            .carousel-btn {
-                width: 35px;
-                height: 35px;
-            }
-
-            .carousel-btn-left {
-                left: -20px;
-            }
-
-            .carousel-btn-right {
-                right: -20px;
-            }
-        }
-
-        @media screen and (max-width: 380px) {
-            .carousel-wrapper {
-                width: 100%;
-                max-width: 250px;
-            }
-
-            .project-card {
-                min-width: 240px;
-                max-width: 240px;
-                padding: 0.8rem;
-            }
-
-            .carousel-btn-left {
-                left: -15px;
-            }
-
-            .carousel-btn-right {
-                right: -15px;
+                height: 350px;
             }
         }
 
@@ -1129,7 +1010,7 @@
                 <div class="hero-section">
                     <h1 class="player-h1">Hailey Wong-Budiman</h1>
                     <h2 class="player-h2">
-                        < Software Engineer>
+                        &lt; Software Engineer &gt;
                     </h2>
                     <div class="piplup-home">
                         <img src="/assets/piplup.png" alt="Piplup">
@@ -1279,98 +1160,84 @@
                 <div class="projects-section">
                     <h2 class="section-title-dark extra-padding">Projects</h2>
 
-                    <div class="project-filters">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="web">Web Apps</button>
-                        <button class="filter-btn" data-filter="mobile">Mobile</button>
-                        <button class="filter-btn" data-filter="other">Other</button>
-                    </div>
-
-                    <div class="carousel-container">
-                        <button class="carousel-btn carousel-btn-left" id="prevBtn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </button>
-
-                        <div class="carousel-wrapper">
-                            <div class="projects-container carousel-track" id="carousel-track">
-                                <div class="project-card" data-category="web">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Web Project 1</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
+                    <div class="projects-grid" id="projects-grid">
+                        
+                        <!-- Project 1 -->
+                        <div class="project-card card-web">
+                            <div class="project-image-placeholder">
+                                <span class="placeholder-text">[Project 1 Preview]</span>
+                            </div>
+                            <div class="project-card-footer">
+                                <div class="project-details">
+                                    <h3 class="project-name">Web Project One</h3>
+                                    <p class="project-description">A responsive full-stack platform built with modern web tools.</p>
                                 </div>
-
-                                <div class="project-card" data-category="mobile">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Mobile App 1</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
-                                <div class="project-card" data-category="other">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Other 1</h3>
-                                    <p class="project-description">[Description]
-                                    </p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
-                                <div class="project-card" data-category="web">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Web Project 2</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
-                                <div class="project-card" data-category="mobile">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Mobile App 2</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
-                                <div class="project-card" data-category="other">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Other 2</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
-                                <div class="project-card" data-category="web">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Web Project 3</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
-                                <div class="project-card" data-category="mobile">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Mobile App 3</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
-                                <div class="project-card" data-category="other">
-                                    <div class="project-image-placeholder"></div>
-                                    <h3 class="project-name">Other 3</h3>
-                                    <p class="project-description">[Description]</p>
-                                    <a href="#" class="github-btn">Github →</a>
-                                </div>
-
+                                <a href="https://github.com/haileylwb" class="github-arrow-link" aria-label="Github link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
 
-                        <button class="carousel-btn carousel-btn-right" id="nextBtn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </button>
+                        <!-- Project 2 -->
+                        <div class="project-card card-mobile">
+                            <div class="project-image-placeholder">
+                                <span class="placeholder-text">[Project 2 Preview]</span>
+                            </div>
+                            <div class="project-card-footer">
+                                <div class="project-details">
+                                    <h3 class="project-name">Mobile App One</h3>
+                                    <p class="project-description">An interactive mobile utility designed with user experience in mind.</p>
+                                </div>
+                                <a href="https://github.com/haileylwb" class="github-arrow-link" aria-label="Github link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="project-card card-data">
+                            <div class="project-image-placeholder">
+                                <span class="placeholder-text">[Project 3 Preview]</span>
+                            </div>
+                            <div class="project-card-footer">
+                                <div class="project-details">
+                                    <h3 class="project-name">Data Script</h3>
+                                    <p class="project-description">An optimized automation script for processing opinion model telemetry.</p>
+                                </div>
+                                <a href="https://github.com/haileylwb" class="github-arrow-link" aria-label="Github link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="project-card card-other">
+                            <div class="project-image-placeholder">
+                                <span class="placeholder-text">[Project 4 Preview]</span>
+                            </div>
+                            <div class="project-card-footer">
+                                <div class="project-details">
+                                    <h3 class="project-name">Utility Tool</h3>
+                                    <p class="project-description">A lightweight developer tool designed to optimize local workflows.</p>
+                                </div>
+                                <a href="https://github.com/haileylwb" class="github-arrow-link" aria-label="Github link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1432,155 +1299,6 @@
 
                 tab.classList.add('active');
                 target.classList.add('active');
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    const filter = button.getAttribute('data-filter');
-
-                    projectCards.forEach(card => {
-                        const category = card.getAttribute('data-category');
-                        if (filter === 'all' || filter === category) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-
-        class ProjectCarousel {
-            constructor() {
-                this.track = document.getElementById('carousel-track');
-                this.prevBtn = document.getElementById('prevBtn');
-                this.nextBtn = document.getElementById('nextBtn');
-                this.cards = Array.from(this.track.children);
-                this.currentIndex = 0;
-                this.cardsPerView = this.getCardsPerView();
-                this.filteredCards = [...this.cards];
-
-                this.init();
-                window.addEventListener('resize', () => {
-                    this.cardsPerView = this.getCardsPerView();
-                    this.updateCarousel();
-                });
-            }
-
-            getCardsPerView() {
-                if (window.innerWidth <= 380) return 1;
-                if (window.innerWidth <= 480) return 1;
-                if (window.innerWidth <= 768) return 1;
-                if (window.innerWidth <= 1024) return 2;
-                return 3;
-            }
-
-            init() {
-                this.prevBtn.addEventListener('click', () => this.previousSlide());
-                this.nextBtn.addEventListener('click', () => this.nextSlide());
-                this.updateCarousel();
-            }
-
-            updateCarousel() {
-                let cardWidth, gap;
-
-                if (window.innerWidth <= 380) {
-                    cardWidth = 240;
-                    gap = 20;
-                } else if (window.innerWidth <= 480) {
-                    cardWidth = 260;
-                    gap = 20;
-                } else if (window.innerWidth <= 768) {
-                    cardWidth = 280;
-                    gap = 20;
-                } else if (window.innerWidth <= 1024) {
-                    cardWidth = 300;
-                    gap = 60;
-                } else {
-                    cardWidth = 300;
-                    gap = 30;
-                }
-
-                const translateX = -(this.currentIndex * (cardWidth + gap));
-
-                this.track.style.transform = `translateX(${translateX}px)`;
-                this.updateButtonVisibility();
-            }
-
-            updateButtonVisibility() {
-                const maxIndex = Math.max(0, this.filteredCards.length - this.cardsPerView);
-
-                if (this.currentIndex <= 0) {
-                    this.prevBtn.classList.add('hidden');
-                } else {
-                    this.prevBtn.classList.remove('hidden');
-                }
-
-                if (this.currentIndex >= maxIndex) {
-                    this.nextBtn.classList.add('hidden');
-                } else {
-                    this.nextBtn.classList.remove('hidden');
-                }
-
-                if (this.filteredCards.length <= this.cardsPerView) {
-                    this.prevBtn.classList.add('hidden');
-                    this.nextBtn.classList.add('hidden');
-                }
-            }
-
-            previousSlide() {
-                if (this.currentIndex > 0) {
-                    this.currentIndex--;
-                    this.updateCarousel();
-                }
-            }
-
-            nextSlide() {
-                const maxIndex = Math.max(0, this.filteredCards.length - this.cardsPerView);
-                if (this.currentIndex < maxIndex) {
-                    this.currentIndex++;
-                    this.updateCarousel();
-                }
-            }
-
-            filterProjects(category) {
-                this.cards.forEach(card => card.style.display = 'none');
-
-                if (category === 'all') {
-                    this.filteredCards = [...this.cards];
-                } else {
-                    this.filteredCards = this.cards.filter(card =>
-                        card.getAttribute('data-category') === category
-                    );
-                }
-
-                this.filteredCards.forEach(card => card.style.display = 'flex');
-
-                this.currentIndex = 0;
-                this.updateCarousel();
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = new ProjectCarousel();
-            const filterButtons = document.querySelectorAll('.filter-btn');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    const filter = button.getAttribute('data-filter');
-                    carousel.filterProjects(filter);
-                });
             });
         });
     </script>
