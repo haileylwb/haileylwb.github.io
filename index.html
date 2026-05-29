@@ -12,6 +12,9 @@
     <!-- Devicon link for badges -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
+    <!-- Google's Model Viewer component for 3D models -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
     <style>
         .press-start-2p-regular {
             font-family: "Press Start 2P", system-ui;
@@ -322,27 +325,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 15%;
-            margin: 0 auto;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 2.5rem auto;
         }
 
         @media screen and (max-width: 890px) {
             .piplup-home {
-                width: 30%;
+                width: 180px;
+                height: 180px;
+                margin-bottom: 1.5rem;
             }
         }
 
-        .piplup-home img {
+        .piplup-home model-viewer {
             width: 100%;
-            height: auto;
-            padding-bottom: 2.5rem;
-            image-rendering: pixelated;
-        }
-
-        @media screen and (max-width: 890px) {
-            .piplup-home img {
-                padding-bottom: 1.5rem;
-            }
+            height: 100%;
+            outline: none;
+            --poster-color: transparent; /* Hides default grey loading state placeholder */
         }
 
         .dialogueBubble {
@@ -1022,7 +1022,16 @@
                         &lt; Software Engineer &gt;
                     </h2>
                     <div class="piplup-home">
-                        <img src="/assets/piplup.png" alt="Piplup">
+                        <model-viewer 
+                            src="https://raw.githubusercontent.com/Pokemon-3D-api/assets/main/models/opt/regular/393.glb" 
+                            alt="A cute spinning 3D model of Piplup" 
+                            auto-rotate 
+                            camera-controls 
+                            disable-zoom
+                            touch-action="pan-y"
+                            interaction-prompt="none"
+                            shadow-intensity="1">
+                        </model-viewer>
                     </div>
                     <div class="dialogueBubble">
                         <img src="/assets/piplupHead.png" alt="Logo" class="dialoguePic">
